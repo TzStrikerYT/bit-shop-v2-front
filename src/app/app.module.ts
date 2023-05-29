@@ -8,7 +8,8 @@ import { ButtonComponent } from './components/button/button.component';
 import { HomeComponent } from './routes/home/home.component';
 import { LoginComponent } from './routes/login/login.component';
 import { CardComponent } from './components/card/card.component';
-import { Page404Component } from './routes/page404/page404.component';
+import { StudentsComponent } from './routes/students/students.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,11 +19,12 @@ import { Page404Component } from './routes/page404/page404.component';
     HomeComponent,
     LoginComponent,
     CardComponent,
-    Page404Component
+    StudentsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

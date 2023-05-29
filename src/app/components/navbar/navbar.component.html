@@ -21,11 +21,23 @@
           routerLinkActive="active bg-primary"
           >Home</a
         >
-        <a class="nav-link"
-         [routerLink]="['/login']"
-         routerLinkActive="active">
-         Login
+        <a
+          class="nav-link"
+          [routerLink]="['/login']"
+          routerLinkActive="active"
+          *ngIf="isLogged === false; else userOption"
+        >
+          Login
         </a>
+        <ng-template #userOption>
+          <a
+            class="nav-link"
+            [routerLink]="['/login']"
+            routerLinkActive="active"
+          >
+            UserName
+          </a>
+        </ng-template>
         <a class="nav-link" href="#">Pricing</a>
         <a class="nav-link disabled">Disabled</a>
       </div>

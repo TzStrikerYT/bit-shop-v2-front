@@ -6,6 +6,7 @@
     <app-button
       [name]="button.name"
       [bSColor]="button.color"
+      *ngIf="button.show === true"
       (click)="buyItem()"
     ></app-button>
   </div>
