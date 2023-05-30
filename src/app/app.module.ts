@@ -10,7 +10,8 @@ import { LoginComponent } from './routes/login/login.component';
 import { CardComponent } from './components/card/card.component';
 import { StudentsComponent } from './routes/students/students.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http"
+import { HttpClientModule } from "@angular/common/http";
+import { RegisterComponent } from './routes/register/register.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from "@angular/common/http"
     HomeComponent,
     LoginComponent,
     CardComponent,
-    StudentsComponent
+    StudentsComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
