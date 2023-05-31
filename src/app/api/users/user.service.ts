@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 import { environment } from 'src/environments/environment.development';
 
 @Injectable({
@@ -8,6 +9,7 @@ import { environment } from 'src/environments/environment.development';
 export class UserService {
 
   urlApi = `${environment.API_URI}/user`
+  userToCreate: User = new User()
 
   constructor(private http: HttpClient) {
   }
@@ -15,6 +17,10 @@ export class UserService {
   //metodos que van a consumir el api
   getAllUsers(){
     return this.http.get(`${this.urlApi}/getAll`)
+  }
+
+  createUser(data: User){
+    return this.http.post(`${this.urlApi}/create`, data)
   }
 
 

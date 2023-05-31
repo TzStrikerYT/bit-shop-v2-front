@@ -1,4 +1,4 @@
-class User {
+export class User {
 
     //atributos
     active?: boolean
@@ -8,7 +8,7 @@ class User {
     email?:string 
     id?: string
     lastName?: string
-    name?: string
+    name: string
     password?: string
     paymentMethods?: any[]
     phoneNumber?: string
@@ -31,7 +31,8 @@ class User {
         role = '',
         updatedAt = '',
         username = '',
-        _id = ''
+        _id = '',
+        name = ''
     ) {
         this.active = active;
         this.address = address;
@@ -47,6 +48,7 @@ class User {
         this.updatedAt = updatedAt;
         this.username = username;
         this._id = _id;
+        this.name = name
     }
 
 }
