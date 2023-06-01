@@ -10,6 +10,7 @@ export class UserService {
 
   urlApi = `${environment.API_URI}/user`
   userToCreate: User = new User()
+  allUsers: User[] = []
 
   constructor(private http: HttpClient) {
   }
@@ -21,6 +22,10 @@ export class UserService {
 
   createUser(data: User){
     return this.http.post(`${this.urlApi}/create`, data)
+  }
+
+  deleteUser(_id: string){
+    return this.http.delete(`${this.urlApi}/delete/${_id}`)
   }
 
 

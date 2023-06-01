@@ -28,7 +28,7 @@ export class User {
         password = '',
         paymentMethods = [],
         phoneNumber = '',
-        role = '',
+        role = '1',
         updatedAt = '',
         username = '',
         _id = '',

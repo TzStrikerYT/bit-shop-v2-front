@@ -10,13 +10,34 @@ import { UserService } from 'src/app/api/users/user.service';
 export class RegisterComponent {
   constructor(public userService: UserService) {}
 
+  ngOnInit(){
+    this.getAllUsers()
+  }
+
   createUser(form: NgForm) {
     // revisar los campos
     let data = form.value;
 
     this.userService.createUser(data).subscribe((data: any) => {
-      console.log(data);
-      alert(data.status > 399 ? data.error.msg : data.msg);
+      console.log({data})
+      this.getAllUsers()
     });
   }
+
+  getAllUsers(){
+    this.userService.getAllUsers().subscribe((data: any) => {
+      this.userService.allUsers = data.result || []
+      console.log(data)
+    })
+  }
+
+  deleteUser(_id: string) {
+    this.userService.deleteUser(_id).subscribe((data) => {
+      alert("Usuario Eliminado")
+      this.getAllUsers()
+    })
+  }
+
+
+
 }
