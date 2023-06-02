@@ -28,5 +28,13 @@ export class UserService {
     return this.http.delete(`${this.urlApi}/delete/${_id}`)
   }
 
+  updateUser(data: User){
+    let dataToUpdate = {
+      _id: data._id,
+      dataToUpdate: data
+    }
+    return this.http.put(`${this.urlApi}/update`, dataToUpdate)
+  }
+
 
 }

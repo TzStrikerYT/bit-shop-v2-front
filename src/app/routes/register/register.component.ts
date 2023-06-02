@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/api/users/user.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-register',
@@ -10,34 +11,53 @@ import { UserService } from 'src/app/api/users/user.service';
 export class RegisterComponent {
   constructor(public userService: UserService) {}
 
-  ngOnInit(){
-    this.getAllUsers()
+  ngOnInit() {
+    this.getAllUsers();
   }
 
-  createUser(form: NgForm) {
+  cleanForm() {
+    this.userService.userToCreate = new User();
+  }
+
+  createOrUpdateUser(form: NgForm) {
     // revisar los campos
-    let data = form.value;
+    let data = form.value
+
+    if (data._id) {
+      // actualizar
+      this.userService.updateUser(data).subscribe((data) => {
+        alert('Usuario actualizado');
+        this.getAllUsers();
+      });
+      this.cleanForm();
+      return;
+    }
+
+    //crear usuario
+    delete data._id;
 
     this.userService.createUser(data).subscribe((data: any) => {
-      console.log({data})
-      this.getAllUsers()
+      console.log({ data });
+      this.getAllUsers();
+      this.cleanForm();
     });
   }
 
-  getAllUsers(){
+  getAllUsers() {
     this.userService.getAllUsers().subscribe((data: any) => {
-      this.userService.allUsers = data.result || []
-      console.log(data)
-    })
+      this.userService.allUsers = data.result || [];
+      console.log(data);
+    });
   }
 
   deleteUser(_id: string) {
     this.userService.deleteUser(_id).subscribe((data) => {
-      alert("Usuario Eliminado")
-      this.getAllUsers()
-    })
+      alert('Usuario Eliminado');
+      this.getAllUsers();
+    });
   }
 
-
-
+  updateUser(user: User) {
+    this.userService.userToCreate = user;
+  }
 }

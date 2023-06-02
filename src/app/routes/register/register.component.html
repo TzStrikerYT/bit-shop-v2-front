@@ -2,12 +2,18 @@
   <div class="row">
     <div class="col">
       <!-- formulario -->
-      <form #userForm="ngForm" (ngSubmit)="createUser(userForm)">
+      <form #userForm="ngForm" (ngSubmit)="createOrUpdateUser(userForm)">
         <div class="d-flex flex-column gap-3">
           <div class="d-flex justify-content-center">
             <h1>Sign up</h1>
           </div>
           <div class="d-flex flex-column flex-sm-row gap-3">
+            <input
+              name="_id"
+              #_id="ngModel"
+              [(ngModel)]="userService.userToCreate._id"
+              type="text"
+            />
             <input
               name="name"
               #name="ngModel"
@@ -136,12 +142,12 @@
         <td>{{user._id}}</td>
         <td>{{user.id}}</td>
         <td>{{user.name}}</td>
-        <td>{{user.lastName}}</td>
+        <td>{{user.dateBirth}}</td>
         <td>
           <a class="btn btn-danger" (click)="deleteUser(user._id || '')" >Eliminar</a>
         </td>
         <td>
-          <a class="btn btn-warning">Editar</a>
+          <a class="btn btn-warning" (click)="updateUser(user)">Editar</a>
         </td>
       </tr>
     </tbody>
