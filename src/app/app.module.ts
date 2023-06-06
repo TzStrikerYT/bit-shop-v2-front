@@ -11,7 +11,8 @@ import { CardComponent } from './components/card/card.component';
 import { StudentsComponent } from './routes/students/students.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
-import { RegisterComponent } from './routes/register/register.component'
+import { RegisterComponent } from './routes/register/register.component';
+import { AdminComponent } from './routes/admin/admin.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './routes/register/register.component'
     LoginComponent,
     CardComponent,
     StudentsComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
