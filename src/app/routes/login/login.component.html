@@ -1,6 +1,32 @@
-<app-card
-  title="Steam Deck"
-  [description]="'COnsola de juegos'"
-  [button]="{ name: 'Comprar', color: 'primary', show: true }"
-  image="https://estaticos-cdn.elperiodico.com/clip/05889f34-f3a1-452f-87a9-10fa333157a1_alta-libre-aspect-ratio_default_0.jpg"
-></app-card>
+<div class="d-flex justify-content-center">
+  <div class="mt-5 border w-25 text-center p-5">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+      <div class="mb-3 row">
+        <div class="">
+          <input
+            name="username"
+            #username="ngModel"
+            [(ngModel)]="userService.auth.username"
+            type="text"
+            class="form-control"
+            placeholder="Usuario"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <div class="">
+          <input
+          name="password"
+            #password="ngModel"
+            [(ngModel)]="userService.auth.password"
+            type="password"
+            class="form-control"
+            id="inputPassword"
+            placeholder="Contraseña"
+          />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Iniciar sesion</button>
+    </form>
+  </div>
+</div>

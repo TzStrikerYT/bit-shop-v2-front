@@ -11,6 +11,10 @@ export class UserService {
   urlApi = `${environment.API_URI}/user`
   userToCreate: User = new User()
   allUsers: User[] = []
+  auth: any = {
+    username: '',
+    password: ''
+  }
 
   constructor(private http: HttpClient) {
   }
@@ -36,5 +40,8 @@ export class UserService {
     return this.http.put(`${this.urlApi}/update`, dataToUpdate)
   }
 
+  login(data: any){
+    return this.http.post(`${this.urlApi}/login`, data)
+  }
 
 }
