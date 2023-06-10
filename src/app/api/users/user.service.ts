@@ -49,7 +49,7 @@ export class UserService {
     return localStorage.getItem('token') ? true : false
   }
 
-  decodeToken(){
+  decodeToken(): any{
     const token = localStorage.getItem('token')
     let decoded
     try {
@@ -59,6 +59,11 @@ export class UserService {
     }
 
     return decoded
+  }
+
+  isAdmin(){
+    let obj = this.decodeToken()
+    return obj && obj.role === 'admin' ? true : false
   }
 
 

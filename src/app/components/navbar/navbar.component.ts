@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/api/users/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
 
   isLogged = false
+
+  constructor (public userService: UserService){}
 
 }

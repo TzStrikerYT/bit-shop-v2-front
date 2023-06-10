@@ -49,6 +49,7 @@
           class="nav-link"
           [routerLink]="['/admin']"
           routerLinkActive="active"
+          *ngIf="userService.isAdmin()"
         >
           Administracion
         </a>
