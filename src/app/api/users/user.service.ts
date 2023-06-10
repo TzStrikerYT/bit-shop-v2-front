@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import jwtDecode from 'jwt-decode';
 import { User } from 'src/app/models/user.model';
 import { environment } from 'src/environments/environment.development';
 
@@ -43,5 +44,16 @@ export class UserService {
   login(data: any){
     return this.http.post(`${this.urlApi}/login`, data)
   }
+
+  isLoggedIn(){
+    return localStorage.getItem('token') ? true : false
+  }
+
+  decodeToken(){
+    const token = localStorage.getItem('token')
+    const decoded = jwtDecode(token ? token : "error en el token")
+    return decoded
+  }
+
 
 }

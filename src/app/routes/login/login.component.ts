@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   constructor(public userService: UserService, public router: Router) {}
 
-  ngOnInit() {}
-
   login(form: NgForm) {
     let data = form.value;
 
