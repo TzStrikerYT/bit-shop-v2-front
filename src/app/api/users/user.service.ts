@@ -51,7 +51,13 @@ export class UserService {
 
   decodeToken(){
     const token = localStorage.getItem('token')
-    const decoded = jwtDecode(token ? token : "error en el token")
+    let decoded
+    try {
+      decoded = jwtDecode(token ? token : "Error")
+    } catch (error) {
+      decoded = false
+    }
+
     return decoded
   }
 

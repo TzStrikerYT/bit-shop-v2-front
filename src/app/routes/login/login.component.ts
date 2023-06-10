@@ -17,11 +17,21 @@ export class LoginComponent {
     if (!data.password || !data.username)
       return alert('debes llenar todos los campos');
 
-    this.userService.login(data).subscribe((data: any) => {
+    this.userService.login(data).subscribe({
+      next: (data: any) => {
+        localStorage.setItem('token', data.token)
+      console.log(this.router.navigate(['/home']))
+      },
+      error: (err: any) => {
+        alert("Error al iniciar sesion")
+      }
+    }
+      /* (data: any) => {
       localStorage.setItem('token', data.token)
-      this.router.navigate(['/home'])
+      console.log(this.router.navigate(['/home']))
     }, (err: any) => {
       alert("Error al iniciar sesion")
-    });
+    } */
+    );
   }
 }
